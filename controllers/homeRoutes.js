@@ -1,10 +1,10 @@
 const router = require("express").Router();
 const { Blog, User, Comment } = require("../models");
 const withAuth = require("../utils/auth");
-//get all blogs
+//get all blogs if signed-in
 router.get("/", async (req, res) => {
   try {
-    // Get all projects and JOIN with user data
+    // Get all blogs and JOIN with user data
     const blogData = await Blog.findAll({
       include: [
         {
@@ -18,10 +18,10 @@ router.get("/", async (req, res) => {
       ],
     });
 
-    // Serialize data so the template can read it
+    //  data plain as array so the template can read it
     const blogs = blogData.map((blog) => blog.get({ plain: true }));
 
-    // Pass serialized data and session flag into template
+    // Pass data and session into hbs template
     res.render("homepage", {
       blogs,
       logged_in: req.session.logged_in,
@@ -65,10 +65,10 @@ router.get("/blog/:id", async (req, res) => {
   }
 });
 
-// get dashboard after login. Use withAuth middleware to prevent access to route
+// get dashboard after login. Using withAuth middleware to prevent unauthorized access 
 router.get("/dashboard", withAuth, async (req, res) => {
   try {
-    // Find the logged in user based on the session ID
+    // Getting logged in user based on the session ID via PK
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ["password"] },
       include: [{ model: Blog }],
@@ -85,7 +85,7 @@ router.get("/dashboard", withAuth, async (req, res) => {
         },
       ],
     });
-
+    //passing data as string to template
     const user = userData.get({ plain: true });
 
     res.render("dashboard", {
@@ -99,7 +99,7 @@ router.get("/dashboard", withAuth, async (req, res) => {
 
 //get login page
 router.get("/login", (req, res) => {
-  // If the user is already logged in, redirect the request to another route
+  // If already logged in, redirect the request to the dashboard route
   if (req.session.logged_in) {
     res.redirect("/dashboard");
     return;
@@ -108,15 +108,42 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 //get to the create-a-blog endpoint
-router.get("/post", (req, res) => {
-  res.render("create-blog", { loggedInd: req.session.loggedInd });
-});
+// router.get("/create", withAuth, async (req, res) => { 
+//   try {
+//     const newBlogData = await Blog.
+//   }
+//   res.render("homepage", { logged_in: req.session.logged_in });
+// });
 // get to the edit blog endpoint
-router.get("/edit", (req, res) => {
+router.get("/edit/:id", withAuth, async  (req, res) => {
+  try {
+  Blog.findOne({
+    where: {
+      id: req.params.id,
+    },
+    attributes: ["id", "title", "body", "date_created"],
+    include: [
+      {
+        model: Comment,
+        attributes: ["id", "body", "blog_id", "user_id","date_created"],
+        include: {
+          model: User,
+          attributes: ["username"],
+        },
+      },
+      {
+        model: User,
+        attributes: ["username"],
+      },
+    ],
+  })
   res.render("edit-blog", {
-    loggedInd: req.session.loggedInd,
+    logged_in: req.session.logged_in,
     blog_id: req.params.id,
   });
+} catch (error) {
+  res.status(500).json(error);
+}
 });
 
 module.exports = router;

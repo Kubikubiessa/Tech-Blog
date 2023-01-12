@@ -1,4 +1,4 @@
-<!-- Loop over each object in the projects array -->
+<!-- Loop over each object in the blogs array -->
 <div class="body">
   <aside class="container-post">
     <nav>
@@ -42,43 +42,42 @@
         <div class="card">
           <form>
             <i class="fas fa-kiwi-bird h3"></i>
-            <h3 for="post-content">Add a new blog</h3>
+            <h3 for="blog-content">Add a new blog</h3>
 
             <button type="submit"><a
-                href="/dashboard/create"
+              {{!--   href="/dashboard/create" --}}
+                href="/blog"
                 style=" color:black;  text-decoration: none;"
               >
-                Create Post</a></button>
+                Create Blog</a></button>
           </form>
         </div>
       </div>
     </div>
  <div class="main-course">
-  <h1>Recent Post</h1>
+  <h1>Recent Blogs</h1>
 
-{{#if posts.length}}
+{{#if blogs.length}}
 
-{{#each posts as |post|}}
+{{#each blogs as |blog|}}
 
 <div class="course-box" style="margin-bottom: 100px;">
-  {{> post-info post}}
-  <a>{{user.username}}</a>|<a href="">github</a>|<a
-          href=""
-        >{{format_date post.created_at}} </a>|<a href="/dashboard/post/{{post.id}}">{{post.comments.length}} comments</a>
-  <div style="text-align: right; border: 0;">
+  {{> blog-info blog}}
+  <a>{{user.username}}</a>| 
     
  <button class="startButton1" >
           <a
-            href="/dashboard/edit/{{post.id}}"
+            {{!-- href="/dashboard/edit/{{blog.id}}" --}}
+              href="/edit/{{blog.id}}"
             style="text-decoration: none; color:white;"
-          >Edit Post</a></button>
+          >Edit Blog</a></button>
           </div>
 </div>
 {{/each}}
 
 {{else}}
 
-<h3>Yo do not currently have any posts</h3>
+<h3>You do not currently have any blogs</h3>
 {{/if}}
 </div>
   </div>
@@ -88,7 +87,7 @@
   <div class="col-md-5">
     <h2>
       <!-- Call helper function with triple brackets to render the emoji span as HTML -->
-      {{{get_emoji}}}
+    
       <a href="/project/{{blog.id}}">{{blog.title}}</a>
     </h2>
     

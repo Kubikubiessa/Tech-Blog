@@ -2,36 +2,7 @@ const router = require('express').Router();
 const { Blog, Comment, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-//       // Get all projects and JOIN with user data
-// router.get("/", async (req, res) => {
-//     try {
-
-//       const blogData = await Blog.findAll({
-//         include: [
-//           {
-//             model: User,
-//             attributes: ["username"],
-//           },
-//           {
-//             model: Comment,
-//             attributes: ['id', 'body', 'date_created', 'user_id'],
-//           },
-//         ],
-//       });
-  
-//       // Serialize data so the template can read it
-//       const blogs = blogData.map((blog) => blog.get({ plain: true }));
-  
-//       // Pass serialized data and session flag into template
-//       res.render("homepage", {
-//         blogs,
-//         logged_in: req.session.logged_in,
-//       });
-//     } catch (err) {
-//       res.status(500).json(err);
-//     }
-//   });
-  
+//API route to create blog
 
 router.post('/', withAuth, async (req, res) => {
   try {
@@ -46,6 +17,7 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
+//API route to delete blog
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const blogData = await Blog.destroy({
@@ -65,7 +37,7 @@ router.delete('/:id', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+//API route to edit blog
 router.put('/:id', withAuth, async (req, res) => {
     try {
       const blogData = await Blog.update({
