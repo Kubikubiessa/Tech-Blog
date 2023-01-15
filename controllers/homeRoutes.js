@@ -97,6 +97,14 @@ router.get("/dashboard", withAuth, async (req, res) => {
   }
 });
 
+router.get("/signup", (req, res) => {
+  if (req.session.logged_in) {
+    res.redirect("/dashboard");
+    return;
+  }
+  res.render("signup");
+});
+
 //get login page
 router.get("/login", (req, res) => {
   // If already logged in, redirect the request to the dashboard route
@@ -106,6 +114,41 @@ router.get("/login", (req, res) => {
   }
 
   res.render("login");
+});
+router.get("/create", withAuth, async (req, res) => {
+  try {
+    const newPostData = await Post.findAll({
+      where: {
+        user_id: req.session.user_id,
+      },
+      attributes: ["id", "title", "body", "date_created"],
+      include: [
+        {
+          model: User,
+          attributes: ["username"],
+        },
+        {
+          model: Comment,
+          attributes: [
+            "id",
+            "body",
+            "post_id",
+            "user_id",
+            "date_created",
+          ],
+          include: {
+            model: User,
+            attributes: ["username"],
+          },
+        },
+      ],
+    });
+
+    const posts = newPostData.map((post) => post.get({ plain: true }));
+    res.render("create-blog", { posts, logged_in: true });
+  } catch (error) {
+    res.status(500).json(error);
+  }
 });
 //get to the create-a-blog endpoint
 // router.get("/create", withAuth, async (req, res) => { 

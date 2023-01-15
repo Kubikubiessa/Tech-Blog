@@ -1,0 +1,104 @@
+<!-- Loop over each object in the blogs array -->
+<div class="body">
+  <aside class="container-post">
+    <nav>
+      <ul>
+        <li>
+          <a href="#" class="logo">
+           <span class="div"></span><span class="nav-item">
+              Your Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="/" class="table">
+            <i class="fas fa-house" ></i><span class="nav-item">Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="" class="table">
+            <i class="fas fa-user"></i><span
+              class="nav-item"
+            >{{username}}</span></a>
+        </li>
+        
+         
+        <li>
+          <a href="#" class="logout1 " id="LogOut">
+            <i class="fas fa-sign-out-alt"></i><span
+              class="nav-item"
+            >logout</span></a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+
+  <div class="container-main">
+    <div class="main">
+      <div class="main-top">
+        <h2>New Blog</h2>
+        <i class="fas fa-check-to-slot"></i>
+      </div>
+      <div class="main-skills">
+        <div class="card">
+          <form>
+            <i class="fas fa-kiwi-bird h3"></i>
+            <h3 for="blog-content">Add a new blog</h3>
+
+            <button type="submit"><a
+              {{!--   href="/dashboard/create" --}}
+                href="/blog"
+                style=" color:black;  text-decoration: none;"
+              >
+                Create Blog</a></button>
+          </form>
+        </div>
+      </div>
+    </div>
+ <div class="main-course">
+  <h1>Recent Blogs</h1>
+
+{{#if blogs.length}}
+
+{{#each blogs as |blog|}}
+
+<div class="course-box" style="margin-bottom: 100px;">
+  {{> blog-info blog}}
+  <a>{{user.username}}</a>| 
+    
+ <button class="startButton1" >
+          <a
+            {{!-- href="/dashboard/edit/{{blog.id}}" --}}
+              href="/edit/{{blog.id}}"
+            style="text-decoration: none; color:white;"
+          >Edit Blog</a></button>
+          </div>
+</div>
+{{/each}}
+
+{{else}}
+
+<h3>You do not currently have any blogs</h3>
+{{/if}}
+</div>
+  </div>
+</div>
+{{#each blogs as |blog| }}
+<div class="row mb-4 project">
+  <div class="col-md-5">
+    <h2>
+      <!-- Call helper function with triple brackets to render the emoji span as HTML -->
+    
+      <a href="/project/{{blog.id}}">{{blog.title}}</a>
+    </h2>
+    
+    <p>Created by {{blog.user.username}} on {{format_date blog.date_created}}</p>
+  </div>
+  <div class="col-md-7">
+    <p>
+      {{blog.body}}
+    </p>
+  </div>
+</div>
+{{/each}}
+<script src="/js/logout1.js"></script>
+<script src="/js/logout.js"></script>
