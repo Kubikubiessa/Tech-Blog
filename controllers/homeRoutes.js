@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { Blog, User, Comment } = require("../models");
 const withAuth = require("../utils/auth");
+const dateFormatted = require("../utils/helpers");
 //get all blogs if signed-in
 router.get("/", async (req, res) => {
   try {
@@ -115,9 +116,10 @@ router.get("/login", (req, res) => {
 
   res.render("login");
 });
-router.get("/create", withAuth, async (req, res) => {
+
+router.get("/blog", withAuth, async (req, res) => {
   try {
-    const newPostData = await Post.findAll({
+    const newBlogData = await Blog.findAll({
       where: {
         user_id: req.session.user_id,
       },
@@ -132,7 +134,7 @@ router.get("/create", withAuth, async (req, res) => {
           attributes: [
             "id",
             "body",
-            "post_id",
+            "blog_id",
             "user_id",
             "date_created",
           ],
@@ -144,8 +146,8 @@ router.get("/create", withAuth, async (req, res) => {
       ],
     });
 
-    const posts = newPostData.map((post) => post.get({ plain: true }));
-    res.render("create-blog", { posts, logged_in: true });
+    const blogs = newBlogData.map((blog) => blog.get({ plain: true }));
+    res.render("create-blog", { blogs, logged_in: true });
   } catch (error) {
     res.status(500).json(error);
   }

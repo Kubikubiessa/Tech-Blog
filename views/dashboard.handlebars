@@ -63,8 +63,10 @@
 
 <div class="course-box" style="margin-bottom: 100px;">
   {{> blog-info blog}}
-  <a>{{user.username}}</a>| 
-    
+  <a>{{user.username}}</a>
+  <a
+          href=""
+        >{{format_date blog.date_created}} </a>
  <button class="startButton1" >
           <a
             {{!-- href="/dashboard/edit/{{blog.id}}" --}}
@@ -86,9 +88,9 @@
 <div class="row mb-4 project">
   <div class="col-md-5">
     <h2>
-      <!-- Call helper function with triple brackets to render the emoji span as HTML -->
+       
     
-      <a href="/project/{{blog.id}}">{{blog.title}}</a>
+      <a href="/blog/{{blog.id}}">{{blog.title}}</a>
     </h2>
     
     <p>Created by {{blog.user.username}} on {{format_date blog.date_created}}</p>
