@@ -14,5 +14,5 @@ const delButtonHandler = async (event) => {
     }
   };
   document
-  .querySelector('.blog-list')
+  .querySelector('.startButton2 delete-blog-btn')
   .addEventListener('click', delButtonHandler);

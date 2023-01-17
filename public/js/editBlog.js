@@ -1,8 +1,8 @@
 const editFormHandler = async (event) => {
     event.preventDefault();
   
-    const title = document.querySelector('#blog-title').value.trim();
-    const body = document.querySelector('#blog-body').value.trim();
+    const title = document.querySelector('input[name="blog-title"]').value.trim();
+    const body = document.querySelector('input[name="blog-body"]').value.trim();
     const blog_id = event.target.getAttribute('data-id');
      
   

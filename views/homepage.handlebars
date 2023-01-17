@@ -18,9 +18,9 @@
 {{> blog-info blog}}
 
 <div style="text-align: right; border: 0; margin-bottom:100px;">
- <a>{{user.username}}</a>|<a href="">github</a>|<a
+ <a>{{user.username}}</a>|<a
           href=""
-        >{{format_date blog.date_created}}</a>|<a href="dashboard/post/{{blog.id}}">{{blog.comments.length}} comments</a>
+        >{{format_date blog.date_created}}</a>|<a href="blog/{{blog.id}}">{{blog.comments.length}} comments</a>
 </div>
 
 {{else}}

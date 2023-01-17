@@ -2,7 +2,7 @@ const commentFormHandler = async (event) => {
     event.preventDefault();
   
     
-    const body = document.querySelector('#comment-body').value.trim();
+    const body = document.querySelector('input[name="comment-body"]').value.trim();
     const blog_id = event.target.getAttribute('data-id');
      
      
@@ -25,5 +25,5 @@ const commentFormHandler = async (event) => {
   };
   document
   .querySelector('.new-comment-form')
-  .addEventListener('submit', newFormHandler);
+  .addEventListener('submit', commentFormHandler);
    

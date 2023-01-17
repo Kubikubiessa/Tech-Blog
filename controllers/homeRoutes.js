@@ -31,7 +31,34 @@ router.get("/", async (req, res) => {
     res.status(500).json(err);
   }
 });
+router.get("/dashboard", async (req, res) => {
+  try {
+    // Get all blogs and JOIN with user data
+    const blogData = await Blog.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ["username"],
+        },
+        {
+          model: Comment,
+          attributes: ['id', 'body', 'date_created', 'user_id'],
+        },
+      ],
+    });
 
+    //  data plain as array so the template can read it
+    const blogs = blogData.map((blog) => blog.get({ plain: true }));
+
+    // Pass data and session into hbs template
+    res.render("dashboard", {
+      blogs,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 //get a single blog
 router.get("/blog/:id", async (req, res) => {
   try {
@@ -57,14 +84,14 @@ router.get("/blog/:id", async (req, res) => {
 
     const blog = blogData.get({ plain: true });
 
-    res.render("blog", {
+    res.render("single-blog", {
       ...blog,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
   }
-});
+}); //not working
 
 // get dashboard after login. Using withAuth middleware to prevent unauthorized access 
 router.get("/dashboard", withAuth, async (req, res) => {
