@@ -1,4 +1,4 @@
-if (document.readyState === "complete") {
+ 
   const delButtonHandler = async (event) => {
      
       const blog_id = window.location.toString().split("/")[
@@ -17,6 +17,6 @@ if (document.readyState === "complete") {
     
   };
   document
-    .querySelector(".startButton2 delete-blog-btn")
+    .querySelector("#delete-blog-btn")
     .addEventListener("click", delButtonHandler);
-}
+

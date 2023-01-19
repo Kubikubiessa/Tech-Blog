@@ -85,7 +85,7 @@ router.get("/blog/:id", async (req, res) => {
     const blog = blogData.get({ plain: true });
 
     res.render("single-blog", {
-      ...blog,
+      blog,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
@@ -179,21 +179,28 @@ router.get("/blog", withAuth, async (req, res) => {
     res.status(500).json(error);
   }
 });
-//get to the create-a-blog endpoint
-// router.get("/create", withAuth, async (req, res) => { 
-//   try {
-//     const newBlogData = await Blog.
-//   }
-//   res.render("homepage", { logged_in: req.session.logged_in });
-// });
+ 
 // get to the edit blog endpoint
 router.get("/edit/:id", withAuth, async  (req, res) => {
   try {
-  Blog.findOne({
+  const editBlogData = await Blog.findOne({
     where: {
       id: req.params.id,
     },
-    attributes: ["id", "title", "body", "date_created"],
+    attributes: ["title", "body", "date_created"],
+    // include: [
+    //   {
+    //     all: true,
+    //     nested: true,
+    //     include: [
+    //       {
+    //         all: true,
+    //         nested: true,
+    //       },
+    //     ],
+    //   },
+    // ],
+
     include: [
       {
         model: Comment,
@@ -209,7 +216,11 @@ router.get("/edit/:id", withAuth, async  (req, res) => {
       },
     ],
   })
+  
+  const blogToEdit = editBlogData.get({plain: true});
+
   res.render("edit-blog", {
+    blogToEdit,
     logged_in: req.session.logged_in,
     blog_id: req.params.id,
   });

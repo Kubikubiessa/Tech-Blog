@@ -66,12 +66,13 @@
   <a>{{user.username}}</a>
   <a
           href=""
-        >{{format_date blog.date_created}} </a>
+        >{{format_date blog.date_created}} </a><a href="blog/{{blog.id}}">{{blog.comments.length}} comments</a>
+        
  <button class="startButton1" >
           <a
             {{!-- href="/dashboard/edit/{{blog.id}}" --}}
               href="/edit/{{blog.id}}"
-            style="text-decoration: none; color:white;"
+            style="text-decoration: none; color:rgb(75, 67, 67);"
           >Edit Blog</a></button>
           </div>
 </div>
