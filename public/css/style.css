@@ -1,0 +1,305 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  /* header {
+    background-color: rgb(22, 20, 20);
+    color: rgb(182, 162, 162);
+    height: 80px;
+    width: 100%;
+    display: block;
+    min-width: 550px;
+  }
+  main {
+    position: absolute;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 2px;
+    flex-wrap: wrap;
+    overflow: hidden;
+  }
+  .body {
+    background: #b9c5d3;
+  
+    display: flex;
+  }
+  .container-post {
+    display: flex;
+  }
+  nav {
+    position: relative;
+    top: 0;
+    bottom: 0;
+    min-height: 100vh;
+    height: auto;
+    left: 0;
+    background: #fff;
+    width: 280px;
+    overflow: hidden;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+  }
+
+.table {
+    display: table;
+  }
+  
+  a {
+    position: relative;
+    font-size: 14px;
+  
+    padding: 10px;
+    text-decoration: none;
+    color: rgb(72, 37, 44);
+  }
+  
+  nav .fas {
+    position: relative;
+    width: 70px;
+    height: 40px;
+    top: 14px;
+    font-size: 20px;
+    text-align: center;
+  }
+  
+  .nav-item {
+    position: relative;
+    top: 12px;
+    margin-left: 10px;
+  }
+
+.container-main {
+    width: 100%;
+  }
+
+.main {
+    position: relative;
+    padding: 20px;
+    width: 100%;
+  }
+  .main-top {
+    display: flex;
+    width: 100%;
+  }
+  .main-skills .card {
+    width: 60%;
+    margin: 40px;
+    background: #fff;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+  }
+  
+  .main-skills .card .h3 {
+    margin: 10px;
+    text-transform: capitalize;
+  }
+
+.main .card button {
+    background: rgb(240, 141, 36);
+    color: #fff;
+    padding: 7px 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  
+  .main-skills .card button:hover {
+    background: rgba(240, 179, 157, 0.856);
+  }
+  
+  .main-skills .card i {
+    font-size: 22px;
+    padding: 10px;
+  }
+  .main-course {
+    margin-top: 20px;
+    text-transform: capitalize;
+    margin-left: 30px;
+  }
+  
+  .course-box {
+    width: 90%;
+    padding: 10px;
+    margin-top: 10px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+    height: auto;
+  }
+  
+  .course-box ul {
+    list-style: none;
+    display: flex;
+  }
+  
+  .course-box ul li {
+    margin: 10px;
+    color: gray;
+    cursor: pointer;
+  }
+  
+  .course-box ul .active {
+    color: #000;
+    border-bottom: 1px solid black;
+  }
+  
+  .course-box .course {
+    display: flex;
+    /* justify-content: center; */
+  /* }
+  
+  .box {
+    width: 90%;
+    padding: 10px;
+    margin: 20px;
+    border-radius: 10px;
+    background: rgb(235, 233, 233);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+    margin-bottom: 50px;
+  }
+  
+  .box p {
+    margin-top: 20px;
+    width: 80%;
+    height: auto;
+    border-radius: 10px;
+    background: white;
+    padding: 20px;
+  }
+  
+  .box i {
+    font-size: 4rem;
+    float: right;
+    margin: -20px 20px 20px 0;
+  }
+  
+  .text {
+    display: flex;
+    margin-top: 5px;
+    width: 80%;
+    justify-content: flex-end;
+  }
+  
+  .startButton {
+    margin-top: 10px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    background: #33b249;
+    width: 150px;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    -webkit-transform-duration: 0.3s;
+    transition-duration: 0.3s;
+    transition-property: box-shadow, transform;
+  }
+  
+  .startButton:hover,
+  .startButton:focus,
+  .startButton:active {
+    box-shadow: 0 0 20px rgb(0, 0, 0, 0.5);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  .startButton1 {
+    margin-top: 10px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    background: rgb(240, 141, 36);
+    width: 120px;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    -webkit-transform-duration: 0.3s;
+    transition-duration: 0.3s;
+    transition-property: box-shadow, transform;
+  }
+  
+  .startButton1:hover,
+  .startButton1:focus,
+  .startButton1:active {
+    box-shadow: 0 0 20px rgb(0, 0, 0, 0.5);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  
+  .startButton2 {
+    margin-top: 10px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    background: rgb(240, 141, 36);
+    width: 150px;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    -webkit-transform-duration: 0.3s;
+    transition-duration: 0.3s;
+    transition-property: box-shadow, transform;
+  }
+  
+  .startButton2:hover,
+  .startButton2:focus,
+  .startButton2:active {
+    box-shadow: 0 0 20px rgb(0, 0, 0, 0.5);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  
+  .startButton3 {
+    margin-top: 10px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    background: #050cd2;
+    width: 100px;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    -webkit-transform-duration: 0.3s;
+    transition-duration: 0.3s;
+    transition-property: box-shadow, transform;
+  }
+  
+  .startButton3:hover,
+  .startButton3:focus,
+  .startButton3:active {
+    box-shadow: 0 0 20px rgb(0, 0, 0, 0.5);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  
+  .section {
+    height: 90vh;
+  } */
+  
+  

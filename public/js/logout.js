@@ -1,4 +1,4 @@
-if (document.readyState === "complete") {
+  
   const logout = async () => {
     const response = await fetch("/api/users/logout", {
       method: "POST",
@@ -13,4 +13,4 @@ if (document.readyState === "complete") {
   };
 
   document.querySelector("#logout").addEventListener("click", logout);
-}
+

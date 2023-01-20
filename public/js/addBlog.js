@@ -1,4 +1,4 @@
-if (document.readyState === "complete") {
+ 
   const newFormHandler = async (event) => {
     event.preventDefault();
 
@@ -24,4 +24,4 @@ if (document.readyState === "complete") {
   document
     .querySelector(".new-blog-form")
     .addEventListener("submit", newFormHandler);
-}
+

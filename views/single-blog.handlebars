@@ -18,7 +18,29 @@
   
   
 </form>
+<div class"comments" style="text-align: right; border:0;">
+{{#if comments.length}}
 
+{{#each comments as |comment|}}
+
+<div class="course-box col-md-5" style="margin-bottom: 100px;">
+ 
+  <a>Created by {{user.username}}</a>
+  <p>{{comment.body}}</p>
+   
+  
+          </div>
+</div>
+{{/each}}
+
+{{else}}
+
+<h3>No comments yet.</h3>
+{{/if}}
+</div>
+
+  
+</div>
 
 {{> comment-partial blog.comments}}
 

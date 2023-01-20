@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
         },
         {
           model: Comment,
-          attributes: ['id', 'body', 'date_created', 'user_id'],
+          attributes: ["id", "body", "date_created", "user_id"],
         },
       ],
     });
@@ -42,7 +42,7 @@ router.get("/dashboard", async (req, res) => {
         },
         {
           model: Comment,
-          attributes: ['id', 'body', 'date_created', 'user_id'],
+          attributes: ["id", "body", "date_created", "user_id"],
         },
       ],
     });
@@ -83,7 +83,7 @@ router.get("/blog/:id", async (req, res) => {
     });
 
     const blog = blogData.get({ plain: true });
-
+console.log(blog);
     res.render("single-blog", {
       blog,
       logged_in: req.session.logged_in,
@@ -91,9 +91,9 @@ router.get("/blog/:id", async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-}); //not working
+});  
 
-// get dashboard after login. Using withAuth middleware to prevent unauthorized access 
+// get dashboard after login. Using withAuth middleware to prevent unauthorized access
 router.get("/dashboard", withAuth, async (req, res) => {
   try {
     // Getting logged in user based on the session ID via PK
@@ -146,7 +146,7 @@ router.get("/login", (req, res) => {
 
 router.get("/blog", withAuth, async (req, res) => {
   try {
-    const newBlogData = await Blog.findAll({
+    const newBlogData = await Blog.findOne({
       where: {
         user_id: req.session.user_id,
       },
@@ -158,13 +158,7 @@ router.get("/blog", withAuth, async (req, res) => {
         },
         {
           model: Comment,
-          attributes: [
-            "id",
-            "body",
-            "blog_id",
-            "user_id",
-            "date_created",
-          ],
+          attributes: ["id", "body", "blog_id", "user_id", "date_created"],
           include: {
             model: User,
             attributes: ["username"],
@@ -179,54 +173,42 @@ router.get("/blog", withAuth, async (req, res) => {
     res.status(500).json(error);
   }
 });
- 
-// get to the edit blog endpoint
-router.get("/edit/:id", withAuth, async  (req, res) => {
-  try {
-  const editBlogData = await Blog.findOne({
-    where: {
-      id: req.params.id,
-    },
-    attributes: ["title", "body", "date_created"],
-    // include: [
-    //   {
-    //     all: true,
-    //     nested: true,
-    //     include: [
-    //       {
-    //         all: true,
-    //         nested: true,
-    //       },
-    //     ],
-    //   },
-    // ],
 
-    include: [
-      {
-        model: Comment,
-        attributes: ["id", "body", "blog_id", "user_id","date_created"],
-        include: {
+// get to the edit blog endpoint
+router.get("/edit/:id", withAuth, async (req, res) => {
+  try {
+    const editBlogData = await Blog.findOne({
+      where: {
+        id: req.params.id,
+      },
+      attributes: ["title", "body", "date_created"],
+
+      include: [
+        {
+          model: Comment,
+          attributes: ["id", "body", "blog_id", "user_id", "date_created"],
+          include: {
+            model: User,
+            attributes: ["username"],
+          },
+        },
+        {
           model: User,
           attributes: ["username"],
         },
-      },
-      {
-        model: User,
-        attributes: ["username"],
-      },
-    ],
-  })
-  
-  const blogToEdit = editBlogData.get({plain: true});
+      ],
+    });
 
-  res.render("edit-blog", {
-    blogToEdit,
-    logged_in: req.session.logged_in,
-    blog_id: req.params.id,
-  });
-} catch (error) {
-  res.status(500).json(error);
-}
+    const blogToEdit = editBlogData.get({ plain: true });
+
+    res.render("edit-blog", {
+      blogToEdit,
+      logged_in: req.session.logged_in,
+      blog_id: req.params.id,
+    });
+  } catch (error) {
+    res.status(500).json(error);
+  }
 });
 
 module.exports = router;

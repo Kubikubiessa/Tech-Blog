@@ -35,7 +35,7 @@
   <div class="container-main">
     <div class="main">
       <div class="main-top">
-        <h2>New Blog</h2>
+        <h2>Dashboard</h2>
         <i class="fas fa-check-to-slot"></i>
       </div>
       <div class="main-skills">
@@ -54,16 +54,16 @@
         </div>
       </div>
     </div>
- <div class="main-course">
-  <h1>Recent Blogs</h1>
+ <div class="main-course row mb-4">
+  <h2>Recent Blogs</h2>
 
 {{#if blogs.length}}
 
 {{#each blogs as |blog|}}
 
-<div class="course-box" style="margin-bottom: 100px;">
+<div class="course-box col-md-5" style="margin-bottom: 100px;">
   {{> blog-info blog}}
-  <a>{{user.username}}</a>
+  <a>Created by {{user.username}}</a>
   <a
           href=""
         >{{format_date blog.date_created}} </a><a href="blog/{{blog.id}}">{{blog.comments.length}} comments</a>
@@ -85,7 +85,7 @@
 </div>
   </div>
 </div>
-{{#each blogs as |blog| }}
+{{!-- {{#each blogs as |blog| }}
 <div class="row mb-4 project">
   <div class="col-md-5">
     <h2>
@@ -102,9 +102,9 @@
     </p>
   </div>
 </div>
-{{/each}}
+{{/each}} --}}
 
-<script src="/js/logout.js" defer></script>
-<script src="/js/editBlog.js" defer></script>
-<script src="/js/deleteBlog.js" defer></script>
-<script src="/js/addBlog.js" defer></script>
+<script src="/js/logout.js"></script>
+<script src="/js/editBlog.js"></script>
+<script src="/js/deleteBlog.js"></script>
+<script src="/js/addBlog.js"></script>
