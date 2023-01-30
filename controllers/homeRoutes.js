@@ -146,30 +146,31 @@ router.get("/login", (req, res) => {
 
 router.get("/blog", withAuth, async (req, res) => {
   try {
-    const newBlogData = await Blog.findOne({
-      where: {
-        user_id: req.session.user_id,
-      },
-      attributes: ["id", "title", "body", "date_created"],
-      include: [
-        {
-          model: User,
-          attributes: ["username"],
-        },
-        {
-          model: Comment,
-          attributes: ["id", "body", "blog_id", "user_id", "date_created"],
-          include: {
-            model: User,
-            attributes: ["username"],
-          },
-        },
-      ],
-    });
-
-    const blogs = newBlogData.map((blog) => blog.get({ plain: true }));
-    res.render("create-blog", { blogs, logged_in: true });
+    // const newBlogData = await Blog.findOne({
+    //   where: {
+    //     user_id: req.session.user_id,
+    //   },
+    //   attributes: ["id", "title", "body", "date_created"],
+    //   include: [
+    //     {
+    //       model: User,
+    //       attributes: ["username"],
+    //     },
+    //     {
+    //       model: Comment,
+    //       attributes: ["id", "body", "blog_id", "user_id", "date_created"],
+    //       include: {
+    //         model: User,
+    //         attributes: ["username"],
+    //       },
+    //     },
+    //   ],
+    // });
+    // console.log(newBlogData);
+    // const blogs = newBlogData.get({ plain: true });
+    res.render("create-blog", { logged_in: true });
   } catch (error) {
+    console.log(error);
     res.status(500).json(error);
   }
 });
@@ -200,7 +201,7 @@ router.get("/edit/:id", withAuth, async (req, res) => {
     });
 
     const blogToEdit = editBlogData.get({ plain: true });
-
+//console.log(blogToEdit);
     res.render("edit-blog", {
       blogToEdit,
       logged_in: req.session.logged_in,
