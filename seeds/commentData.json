@@ -1,0 +1,19 @@
+[
+    {
+      
+      "body": "They should be.",
+      "user_id": 2,
+      "blog_id": 1
+    },
+    {
+      "body": "IOf course...",
+      "user_id": 3,
+      "blog_id": 2
+    },
+    {
+      
+      "comment_text": "I wonder what that will look like!",
+      "user_id": 4,
+      "post_id": 3
+    }
+  ]
