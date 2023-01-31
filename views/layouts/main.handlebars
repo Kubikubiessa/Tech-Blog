@@ -17,13 +17,13 @@
     <header class="display-flex justify-space-between align-center p-2">
       <h1>
         <span role="img" aria-label="tech">💻</span>
-        <a href="/">Latest in Tech!</a>
+        <a class="a" href="/">Latest in Tech!</a>
       </h1>
       <nav>
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-        <a href="/dashboard">Dashboard</a> |
-        <button class="no-button" id="logout">logout</button>
+        <a class="a" href="/dashboard">Dashboard</a> |
+        <button class="startButton1" id="logout">logout</button>
         {{else}}
         <a href="/login">login</a>
         {{/if}}

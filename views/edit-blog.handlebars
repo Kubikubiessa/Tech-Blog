@@ -19,7 +19,7 @@
 
       <input
         style="height: 30px;  border-radius: 4px;"
-        class="form-control"
+        class="textarea"
         name="blog-title"
         type="text"
         placeholder="{{blogToEdit.title}}"
@@ -29,12 +29,12 @@
     <div>
       <br />
       <div style="text-align:center; ">
-        <label for="blog-content">Blog content</label>
+        <label for="blog-content">Blog content:</label>
       </div>
       <br />
       <div style="text-align: center;">
         <input
-          class="form-control textarea"
+          class="textarea"
           style="height:100px; text-align: center;"
           name="blog-content"
           type="text"
@@ -45,15 +45,15 @@
     </div>
  
     <div style="text-align: center; margin-top: 10px;">
-      <button type="submit" class="startButton">Save Blog</button>
-      <button type="button" id="delete-blog-btn">Delete Blog</button>
+      <button type="submit" class="startButton">Save</button>
+      <button type="button" class="startButton1" id="delete-blog-btn">Delete</button>
 
     </div>
   </form>
 </article>
-
+{{!-- 
 {{> comment-partial blog.comments}}
-{{> blog-info blog}}
+{{> blog-info blog}} --}}
 
 <script src="/js/editBlog.js"></script>
 <script src="/js/deleteBlog.js"></script>

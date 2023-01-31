@@ -14,20 +14,13 @@
             <i class="fas fa-house" ></i><span class="nav-item">Home</span>
           </a>
         </li>
-        <li>
+        {{!-- <li>
           <a href="" class="table">
             <i class="fas fa-user"></i><span
               class="nav-item"
-            >{{username}}</span></a>
-        </li>
-        
-         
-        {{!-- <li>
-          <a href="#" class="logout1 " id="LogOut">
-            <i class="fas fa-sign-out-alt"></i><span
-              class="nav-item"
-            >logout</span></a>
+            >User: {{user.username}}</span></a>
         </li> --}}
+        
       </ul>
     </nav>
   </aside>
@@ -42,14 +35,13 @@
         <div class="card">
           <form class="new-blog-form">
             <i class="fas fa-kiwi-bird h3"></i>
-            <h3 for="blog-content">Add a new blog</h3>
+            <h3 for="blog-content"  style=" color:rgb(254, 253, 252);  text-decoration: none;">Add a new blog</h3>
 
-            <button type="submit"><a
-              {{!--   href="/dashboard/create" --}}
+            <button   type="submit"><a
+           
                 href="/blog"
                 style=" color:black;  text-decoration: none;"
-              >
-                Create Blog</a></button>
+              >Create Blog</a></button>
           </form>
         </div>
       </div>
