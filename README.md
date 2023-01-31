@@ -1,47 +1,85 @@
 # Tech-Blog
 This project entails a CMS-style blog site similar to a Wordpress site, where developers can publish their blog posts and comment on other developers’ posts as well. 
-## User Story
+ 
 
-```md
-AS A developer who writes about tech
-I WANT a CMS-style blog site
-SO THAT I can publish articles, blog posts, and my thoughts and opinions
-```
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Acceptance Criteria
+  ## Table of Contents <!-- omit in toc -->
+- [Tech-Blog](#tech-blog)
+  - [Description](#description)
+  - [Usage](#usage)
+  - [Contribution](#contribution)
+  - [Mockup](#mockup)
+  - [Credits](#credits)
+  
+## Description
+This application is a blog whith which users can send posts, make comments on posts.  It is platform for users to come together to share and comment about the latest in tech. 
 
-```md
-GIVEN a CMS-style blog site
-WHEN I visit the site for the first time
-THEN I am presented with the homepage, which includes existing blog posts if any have been posted; navigation links for the homepage and the dashboard; and the option to log in
-WHEN I click on the homepage option
-THEN I am taken to the homepage
-WHEN I click on any other links in the navigation
-THEN I am prompted to either sign up or sign in
-WHEN I choose to sign up
-THEN I am prompted to create a username and password
-WHEN I click on the sign-up button
-THEN my user credentials are saved and I am logged into the site
-WHEN I revisit the site at a later time and choose to sign in
-THEN I am prompted to enter my username and password
-WHEN I am signed in to the site
-THEN I see navigation links for the homepage, the dashboard, and the option to log out
-WHEN I click on the homepage option in the navigation
-THEN I am taken to the homepage and presented with existing blog posts that include the post title and the date created
-WHEN I click on an existing blog post
-THEN I am presented with the post title, contents, post creator’s username, and date created for that post and have the option to leave a comment
-WHEN I enter a comment and click on the submit button while signed in
-THEN the comment is saved and the post is updated to display the comment, the comment creator’s username, and the date created
-WHEN I click on the dashboard option in the navigation
-THEN I am taken to the dashboard and presented with any blog posts I have already created and the option to add a new blog post
-WHEN I click on the button to add a new blog post
-THEN I am prompted to enter both a title and contents for my blog post
-WHEN I click on the button to create a new blog post
-THEN the title and contents of my post are saved and I am taken back to an updated dashboard with my new blog post
-WHEN I click on one of my existing posts in the dashboard
-THEN I am able to delete or update my post and taken back to an updated dashboard
-WHEN I click on the logout option in the navigation
-THEN I am signed out of the site
-WHEN I am idle on the site for more than a set time
-THEN I am able to view comments but I am prompted to log in again before I can add, update, or delete comments
-```
+This is a full-stack application using the following technologies:
+- Node.js and Express.js to create a RESTful API
+- Handlebars.js as the template engine.
+- MySQL and the Sequelize ORM for the database.
+- Passport for authentication
+- Heroku
+  
+## Usage 
+The user can
+- sign up for their profile
+- log in and log out
+- create new posts and delete posts
+- comment on other posts
+ 
+## Contribution
+
+If you have an idea to improve this app, fork the repo, create your branch, commit changes, push your contribution to your branch, and create a pull request. 
+
+ 
+
+ ## Mockup 
+
+Main page is the login screen. If a user doesn't have an account, they can click on either sign up links to be redirected to that page.
+
+![image](./public/assets/%20Sign%20Up.png)
+
+At the signup page, users are asked to input three fields of information that will pertain to their new  account.
+
+![image](./public/assets/%20Sign%20Up.png )
+
+Upon creating a valid new account, users are redirected to their dashboard. Here they can access numerous features of the site.
+
+![image](./public/assets/%20dashboard.png )
+
+Screen for creating a blog:
+
+![image](./public/assets/%20Creating%20a%20blog.png )
+ 
+Blogs you create will also populate in your dashboard so you can keep track of your latest blogs: 
+
+ ![image](./public/assets/%20dashboard.png)
+
+ Users are able to comment on other users' blogs as well
+
+![image](./public/assets/%20Writing%20a%20Comment.png )
+
+The app will track the number of comments on a given blogs, and blogs show up on the homepage when logged in.
+
+![image](./public/assets/%20Homepage%20with%20blogs%20and%20comments%20count.png)
+
+Users can edit their on blogs: 
+![image](./public/assets/%20Editing%20a%20Blog.png)
+
+When a user signs out, they will be redirected to the login screen where they can choose to log back in and continue blogging!  
+
+![image](./public/assets/Login.png)
+
+## Credits
+
+This repo was created by Heidrun Kubiessa (kubiKubiessa).
+
+Contact Kubi:
+
+[Heidrun's GitHub](https://github.com/kubikubiessa)
+
+[Email](kubikubiessa@gmail.com)
+
+[LinkedIn](https://www.linkedin.com/in/heidrun-kubiessa-ph-d-98110324a/)
